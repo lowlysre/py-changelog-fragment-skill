@@ -25,13 +25,24 @@ The fragment's `.type` suffix isn't declared under `[[tool.towncrier.type]]` in 
 **Duplicate or out-of-order entries in the built changelog**
 towncrier sorts by type, then by fragment filename. If ordering looks wrong, check the `type` order declared in the config, it controls section order, not addition order.
 
-## PR-workflow issues (both tools)
+## PR-workflow issues (all tools)
 
 **Squash-merge fragment loss**
 If the repo squash-merges PRs, a fragment added in an early commit and later renamed/deleted within the same PR still lands correctly, since squash collapses to the final tree. The actual failure mode is the opposite: someone adds a fragment, force-pushes to fix an unrelated review comment, and the fragment file is fine, but a *rebase onto a stale base* before merge can silently drop it if the rebase had a conflict resolved incorrectly. Diff the final PR against its base to confirm the fragment file is still present before merge.
 
 **CI passes locally but fails in CI (or vice versa)**
-Confirm the CI job runs the same tool version as installed locally, `antsibull-changelog --version` / `towncrier --version`. Section/type lists and lint rules have changed across major versions.
+Confirm the CI job runs the same tool version as installed locally, `antsibull-changelog --version` / `towncrier --version` / `scriv --version`. Section/type lists and lint rules have changed across major versions.
 
 **Fragment review gate blocks an internal-only PR**
 If a PR genuinely has no user-facing effect, use the project's documented exemption (a `no-changelog-needed`-style CI label or a project-specific towncrier `check` exemption) rather than adding a placeholder fragment. Adding a "no changes" fragment pollutes the real changelog.
+
+## scriv
+
+**`scriv collect` picks up a fragment that's still a placeholder**
+`scriv create` pre-fills every category as a commented-out template; if a section gets uncommented without replacing `A bullet item for this fragment. EDIT ME!`, `collect` folds the placeholder text straight into the changelog. There's no built-in lint step to catch this, review the fragment's diff for leftover placeholder text before merging.
+
+**scriv reads the wrong settings**
+Settings cascade across `setup.cfg`, `tox.ini`, `pyproject.toml`, and `changelog.d/scriv.ini`, with later files overriding earlier ones. If a setting doesn't seem to apply, check whether a `changelog.d/scriv.ini` is silently overriding the project-level config.
+
+**`pyproject.toml`-based config isn't picked up**
+Reading `[tool.scriv]` from `pyproject.toml` requires `tomli` (or Python 3.11+'s built-in `tomllib`). Install with `pip install scriv[toml]` (or `uv add --dev "scriv[toml]"`) on older Python versions.

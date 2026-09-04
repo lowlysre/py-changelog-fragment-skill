@@ -1,6 +1,6 @@
 # py-changelog-fragment-skill
 
-An agentic skill for creating and validating Python changelog fragments in a PR workflow, covering `antsibull-changelog` and `towncrier`. The skill identifies which tool a project uses, then loads the matching reference doc for installation, fragment format, naming, validation commands, troubleshooting, and best practices.
+An agentic skill for creating and validating Python changelog fragments in a PR workflow, covering `antsibull-changelog`, `towncrier`, and `scriv`. The skill identifies which tool a project uses, then loads the matching reference doc for installation, fragment format, naming, validation commands, troubleshooting, and best practices.
 
 This README follows [Diátaxis](https://diataxis.fr): a quickstart tutorial, task-oriented how-to guides, plain reference material, and an explanation of why this exists.
 
@@ -62,6 +62,7 @@ CI runs the same check in strict mode on every push and pull request (see [`.git
 | [`skills/python-changelog-fragments/SKILL.md`](skills/python-changelog-fragments/SKILL.md) | Frontmatter (`name`, `description`, `allowed-tools`) and the top-level workflow: identify the tool, load a reference, write the fragment, validate it |
 | [`skills/python-changelog-fragments/references/antsibull-changelog.md`](skills/python-changelog-fragments/references/antsibull-changelog.md) | Installation, fragment YAML format, section names, `changelog lint`/`generate`/`release` |
 | [`skills/python-changelog-fragments/references/towncrier.md`](skills/python-changelog-fragments/references/towncrier.md) | Installation, fragment naming, `pyproject.toml` config, `towncrier check`/`build` |
+| [`skills/python-changelog-fragments/references/scriv.md`](skills/python-changelog-fragments/references/scriv.md) | Installation, the `scriv create` workflow, category sections, `scriv collect`/`github-release` |
 | [`skills/python-changelog-fragments/references/troubleshooting.md`](skills/python-changelog-fragments/references/troubleshooting.md) | Fixes for common lint/build errors and PR-workflow failure modes |
 | [`skills/python-changelog-fragments/references/best-practices.md`](skills/python-changelog-fragments/references/best-practices.md) | Writing fragments for the changelog reader, naming, review-gate conventions |
 
@@ -69,6 +70,6 @@ Reference files load on demand once the agent identifies the tool in use, not on
 
 ## Explanation
 
-`antsibull-changelog` and `towncrier` both solve the same problem: a PR-scoped snippet that gets collected into the real changelog at release time, instead of a maintainer reconstructing the changelog from commit history at cut time. They disagree on format and directory convention, so a generic "write a changelog entry" instruction either guesses wrong or forces the agent to read both tools' docs on every PR.
+`antsibull-changelog`, `towncrier`, and `scriv` all solve the same problem: a PR-scoped snippet that gets collected into the real changelog at release time, instead of a maintainer reconstructing the changelog from commit history at cut time. They disagree on format and directory convention, so a generic "write a changelog entry" instruction either guesses wrong or forces the agent to read all three tools' docs on every PR.
 
-This skill front-loads the disambiguation instead: it checks for `changelogs/fragments/` versus a `[tool.towncrier]` config block, then loads only the reference doc for the tool actually in use. The troubleshooting and best-practices docs exist separately from the per-tool references because most of their content, one fragment per user-facing change, validate before committing, don't hand-edit generated output, applies to both tools and would otherwise get duplicated across two files.
+This skill front-loads the disambiguation instead: it checks for `changelogs/fragments/` versus a `[tool.towncrier]` or `[tool.scriv]` config block, then loads only the reference doc for the tool actually in use. The troubleshooting and best-practices docs exist separately from the per-tool references because most of their content, one fragment per user-facing change, validate before committing, don't hand-edit generated output, applies to both tools and would otherwise get duplicated across two files.

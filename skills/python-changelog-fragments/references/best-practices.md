@@ -13,11 +13,11 @@ A PR that fixes a bug and adds an unrelated feature gets two fragments (or two e
 
 ## Name fragments so they're traceable
 
-Both tools use the issue or PR number in the filename by convention (`1234-fix-timeout.yml` for antsibull-changelog, `1234.bugfix.md` for towncrier). This lets a reader trace the changelog entry back to its discussion. For PR-only fragments with no tracked issue, towncrier's `+slug.type.md` convention still keeps entries unique without a real issue number; antsibull-changelog projects generally still expect a PR number even without a tracked issue.
+antsibull-changelog and towncrier use the issue or PR number in the filename by convention (`1234-fix-timeout.yml` for antsibull-changelog, `1234.bugfix.md` for towncrier). This lets a reader trace the changelog entry back to its discussion. For PR-only fragments with no tracked issue, towncrier's `+slug.type.md` convention still keeps entries unique without a real issue number; antsibull-changelog projects generally still expect a PR number even without a tracked issue. scriv names fragments for you via `scriv create` (date, username, branch), so there's nothing to choose, just don't rename the generated file.
 
 ## Match the project's existing tone and section choice
 
-Read a handful of recent fragments (`git log -p -- changelogs/fragments/` or the towncrier fragment directory) before writing a new one. Consistency across entries matters more than any individual fragment being clever.
+Read a handful of recent fragments (`git log -p -- changelogs/fragments/`, the towncrier fragment directory, or `changelog.d/` for scriv) before writing a new one. Consistency across entries matters more than any individual fragment being clever.
 
 ## Add the fragment in the same PR as the change
 
@@ -29,7 +29,7 @@ Never edit `CHANGELOG.rst`, `CHANGELOG.md`, or `changelogs/changelog.yaml` direc
 
 ## Validate before pushing, not after CI fails
 
-Run `antsibull-changelog lint` or `towncrier check` locally before opening the PR. Both commands run in under a second and catch the most common mistakes (bad section/type name, malformed filename, invalid markup) before a CI round-trip.
+Run `antsibull-changelog lint`, `towncrier check`, or (for scriv) a self-review against the fragment's diff before opening the PR, scriv has no built-in lint command, so replacing placeholder text is on you. These checks run in under a second and catch the most common mistakes (bad section/type name, malformed filename, invalid markup, leftover placeholder text) before a CI round-trip.
 
 ## Skip fragments deliberately, not by omission
 

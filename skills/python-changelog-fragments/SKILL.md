@@ -1,12 +1,12 @@
 ---
 name: python-changelog-fragments
-description: "Use when a PR needs a changelog fragment for a Python project using antsibull-changelog or towncrier: installing the tool, writing the fragment file, naming it, and validating it before commit. Also use to troubleshoot fragment lint failures or `changelog build`/`towncrier build` errors."
-allowed-tools: Bash(towncrier:*), Bash(antsibull-changelog:*), Bash(pip:*), Bash(pipx:*), Bash(uv:*), Bash(uvx:*), Read, Glob, Grep, Write
+description: "Use when a PR needs a changelog fragment for a Python project using antsibull-changelog, towncrier, or scriv: installing the tool, writing the fragment file, naming it, and validating it before commit. Also use to troubleshoot fragment lint failures or `changelog build`/`towncrier build`/`scriv collect` errors."
+allowed-tools: Bash(towncrier:*), Bash(antsibull-changelog:*), Bash(scriv:*), Bash(pip:*), Bash(pipx:*), Bash(uv:*), Bash(uvx:*), Read, Glob, Grep, Write
 ---
 
 # Python changelog fragments
 
-Create and validate changelog fragments for Python projects that use `antsibull-changelog` (Ansible collections) or `towncrier` (most other Python packages). Both tools solve the same problem, a PR-scoped snippet that gets collected into the real changelog at release time, but they use different file formats and directory conventions.
+Create and validate changelog fragments for Python projects that use `antsibull-changelog` (Ansible collections), `towncrier`, or `scriv` (most other Python packages). All three solve the same problem, a PR-scoped snippet that gets collected into the real changelog at release time, but they use different file formats, config sections, and directory conventions.
 
 ## 1. Identify the tool in use
 
@@ -15,14 +15,16 @@ Check for these markers before doing anything else, they determine which referen
 | Marker | Tool |
 |--------|------|
 | `changelogs/config.yaml` or `changelogs/fragments/` | antsibull-changelog |
-| `pyproject.toml` has a `[tool.towncrier]` section, or a `newsfragments/`/`changes/`/`changelog.d/` directory exists | towncrier |
+| `pyproject.toml` has a `[tool.towncrier]` section | towncrier |
+| `pyproject.toml` has a `[tool.scriv]` section, or `setup.cfg`/`tox.ini` has a `[scriv]` section | scriv |
 
-If neither marker exists, ask which tool the project uses rather than guessing, the fragment format and directory are not interchangeable.
+`towncrier` and `scriv` both commonly use a directory literally named `changelog.d/`, so disambiguate by the config section name, not the directory. If neither marker exists, ask which tool the project uses rather than guessing, the fragment format and directory are not interchangeable.
 
 ## 2. Load the tool-specific reference
 
 - antsibull-changelog → read `references/antsibull-changelog.md` for installation, fragment YAML sections, naming, and `changelog build`/`lint` usage.
 - towncrier → read `references/towncrier.md` for installation, fragment naming (`<issue>.<type>.md`), `pyproject.toml` config, and `towncrier build`/`check` usage.
+- scriv → read `references/scriv.md` for installation, the `scriv create` workflow, category sections, and `scriv collect` usage.
 
 ## 3. Write the fragment
 
