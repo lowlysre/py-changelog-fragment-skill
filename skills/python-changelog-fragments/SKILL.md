@@ -31,6 +31,9 @@ Check for these markers before doing anything else, they determine which referen
 - Match the existing fragments in the project's fragment directory for tone and section/type choice, don't invent a new type.
 - One fragment per user-facing change. A PR touching multiple unrelated behaviors gets multiple fragments.
 - Write it as a changelog entry for the end user, not a commit message: describe the effect of the change, not the diff.
+- State the concrete effect, not a vague quality claim: say what broke and under what condition, or what's now possible, instead of reaching for words like "robust", "seamless", "improved", or "enhanced" that carry no information on their own.
+- Don't hedge ("aims to fix", "should resolve"). State what the change does. If there's a genuine known limitation, say so plainly rather than leaving it out.
+- Skip connective filler ("Additionally,", "It's worth noting that", "Note that") and AI-flavored framing ("This release introduces..."). Start the sentence at the subject.
 - Skip fragments for changes with no user-facing effect (internal refactors, test-only changes, CI config) unless the project's contributing guide says otherwise.
 
 ## 4. Validate before committing

@@ -7,6 +7,20 @@ A fragment is read months later by someone deciding whether to upgrade, not by t
 - Good: `lookup_plugin - fix connection timeout not being honored when set via environment variable (https://github.com/org/repo/issues/1234).`
 - Bad: `Refactored _get_timeout() to check env vars before falling back to config.`
 
+## Say the specific thing, not the vague adjective
+
+Words like "robust", "seamless", "powerful", "efficient", or "enhanced" describe a feeling, not a fact, so they're the first thing to cut. Replace each with the concrete detail it's standing in for:
+
+- Instead of "improved performance", say what changed: "cuts cold-start from 8s to 1.2s".
+- Instead of "more robust error handling", say what it now handles: "retries on connection reset instead of failing immediately".
+- Instead of "enhanced logging", say what's new: "adds the request ID to every log line".
+
+This isn't about tone policing, it's that a vague adjective forces the reader to guess at the actual change, and a changelog exists so they don't have to.
+
+## State it plainly, don't hedge it
+
+"Aims to fix" or "should resolve" reads as uncertainty the maintainer didn't intend. If the fix is confirmed, say what it does: "fixes X". If there's a genuine known gap (works around the common case but not an edge case, say), state that plainly instead of a vague qualifier or silence, a reader deciding whether to upgrade needs the real limitation, not a hedge.
+
 ## One fragment per user-facing change
 
 A PR that fixes a bug and adds an unrelated feature gets two fragments (or two entries in one antsibull-changelog fragment file, one per section). Don't bundle unrelated changes into a single bullet just to save a file.
