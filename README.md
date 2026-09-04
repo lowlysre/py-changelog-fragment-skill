@@ -1,5 +1,11 @@
 # py-changelog-fragment-skill
 
+![Hero banner: three changelog fragment files (antsibull, towncrier, scriv) merging into one CHANGELOG document](assets/hero.svg)
+
+[![Validate skill schema](https://github.com/lowlysre/py-changelog-fragment-skill/actions/workflows/agnix.yml/badge.svg)](https://github.com/lowlysre/py-changelog-fragment-skill/actions/workflows/agnix.yml)
+[![License: MIT](https://img.shields.io/github/license/lowlysre/py-changelog-fragment-skill)](LICENSE)
+[![skills.sh](https://skills.sh/b/lowlysre/py-changelog-fragment-skill)](https://skills.sh/lowlysre/py-changelog-fragment-skill)
+
 An agentic skill for creating and validating Python changelog fragments in a PR workflow, covering `antsibull-changelog`, `towncrier`, and `scriv`. The skill identifies which tool a project uses, then loads the matching reference doc for installation, fragment format, naming, validation commands, troubleshooting, and best practices.
 
 This README follows [Diátaxis](https://diataxis.fr): a quickstart tutorial, task-oriented how-to guides, plain reference material, and an explanation of why this exists.
