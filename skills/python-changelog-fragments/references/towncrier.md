@@ -8,7 +8,21 @@
 pip install towncrier
 ```
 
-Most projects pin it as a dev/test dependency, check `pyproject.toml`'s `[project.optional-dependencies]` or a `requirements-dev.txt` before installing globally.
+With [`uv`](https://docs.astral.sh/uv/): add it to the project so `towncrier build`/`check` runs against the project's own dependencies and config, rather than installing it standalone.
+
+```bash
+uv add --dev towncrier
+```
+
+For a one-off run without adding it to the project:
+
+```bash
+pipx run towncrier --help
+# or
+uvx towncrier --help
+```
+
+Most projects pin it as a dev/test dependency, check `pyproject.toml`'s `[project.optional-dependencies]`/`[dependency-groups]` or a `requirements-dev.txt` before installing globally.
 
 ## Project layout
 

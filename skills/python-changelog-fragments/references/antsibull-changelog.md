@@ -8,13 +8,21 @@
 pip install antsibull-changelog
 ```
 
+With [`uv`](https://docs.astral.sh/uv/) instead of `pip`:
+
+```bash
+uv tool install antsibull-changelog
+```
+
 For a one-off run without polluting the environment:
 
 ```bash
 pipx run antsibull-changelog --help
+# or
+uvx antsibull-changelog --help
 ```
 
-Ansible collections typically pin it as a dev dependency in `test-requirements.txt` or `requirements-dev.txt`, check there first before installing globally.
+Ansible collections typically pin it as a dev dependency in `test-requirements.txt` or `requirements-dev.txt` (or, in a `uv`-managed project, the `[dependency-groups]` table in `pyproject.toml`), check there first before installing globally.
 
 ## Project layout
 

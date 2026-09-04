@@ -1,7 +1,7 @@
 ---
 name: python-changelog-fragments
 description: "Use when a PR needs a changelog fragment for a Python project using antsibull-changelog or towncrier: installing the tool, writing the fragment file, naming it, and validating it before commit. Also use to troubleshoot fragment lint failures or `changelog build`/`towncrier build` errors."
-allowed-tools: Bash(towncrier:*), Bash(antsibull-changelog:*), Bash(pip:*), Bash(pipx:*), Read, Glob, Grep, Write
+allowed-tools: Bash(towncrier:*), Bash(antsibull-changelog:*), Bash(pip:*), Bash(pipx:*), Bash(uv:*), Bash(uvx:*), Read, Glob, Grep, Write
 ---
 
 # Python changelog fragments
