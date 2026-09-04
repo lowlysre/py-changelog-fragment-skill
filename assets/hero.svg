@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="300" viewBox="0 0 1400 300" role="img" aria-labelledby="title desc">
+  <title id="title">py-changelog-fragment-skill</title>
+  <desc id="desc">Three small changelog fragment files merging into one CHANGELOG document</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="300" fill="url(#bg)"/>
+
+  <!-- three fragment files -->
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif">
+    <g transform="translate(90,90)">
+      <rect width="110" height="140" rx="8" fill="#1f6feb" opacity="0.9"/>
+      <rect x="18" y="24" width="74" height="8" rx="4" fill="#e6edf3"/>
+      <rect x="18" y="44" width="74" height="8" rx="4" fill="#e6edf3" opacity="0.7"/>
+      <rect x="18" y="64" width="46" height="8" rx="4" fill="#e6edf3" opacity="0.5"/>
+      <text x="55" y="168" text-anchor="middle" fill="#8b949e" font-size="13">antsibull</text>
+    </g>
+    <g transform="translate(230,60)">
+      <rect width="110" height="140" rx="8" fill="#3fb950" opacity="0.9"/>
+      <rect x="18" y="24" width="74" height="8" rx="4" fill="#e6edf3"/>
+      <rect x="18" y="44" width="74" height="8" rx="4" fill="#e6edf3" opacity="0.7"/>
+      <rect x="18" y="64" width="46" height="8" rx="4" fill="#e6edf3" opacity="0.5"/>
+      <text x="55" y="168" text-anchor="middle" fill="#8b949e" font-size="13">towncrier</text>
+    </g>
+    <g transform="translate(370,90)">
+      <rect width="110" height="140" rx="8" fill="#d29922" opacity="0.9"/>
+      <rect x="18" y="24" width="74" height="8" rx="4" fill="#e6edf3"/>
+      <rect x="18" y="44" width="74" height="8" rx="4" fill="#e6edf3" opacity="0.7"/>
+      <rect x="18" y="64" width="46" height="8" rx="4" fill="#e6edf3" opacity="0.5"/>
+      <text x="55" y="168" text-anchor="middle" fill="#8b949e" font-size="13">scriv</text>
+    </g>
+
+    <!-- arrow -->
+    <path d="M 520 150 L 590 150" stroke="#8b949e" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L6,3 L0,6 Z" fill="#8b949e"/>
+      </marker>
+    </defs>
+
+    <!-- merged changelog -->
+    <g transform="translate(620,50)">
+      <rect width="150" height="200" rx="8" fill="#21262d" stroke="#e6edf3" stroke-width="2"/>
+      <rect x="20" y="28" width="110" height="10" rx="5" fill="#e6edf3"/>
+      <rect x="20" y="54" width="110" height="8" rx="4" fill="#1f6feb"/>
+      <rect x="20" y="72" width="90" height="8" rx="4" fill="#1f6feb" opacity="0.7"/>
+      <rect x="20" y="98" width="110" height="8" rx="4" fill="#3fb950"/>
+      <rect x="20" y="116" width="70" height="8" rx="4" fill="#3fb950" opacity="0.7"/>
+      <rect x="20" y="142" width="110" height="8" rx="4" fill="#d29922"/>
+      <rect x="20" y="160" width="80" height="8" rx="4" fill="#d29922" opacity="0.7"/>
+      <text x="75" y="228" text-anchor="middle" fill="#8b949e" font-size="13">CHANGELOG</text>
+    </g>
+
+    <text x="830" y="130" fill="#e6edf3" font-size="34" font-weight="600">Python changelog</text>
+    <text x="830" y="172" fill="#e6edf3" font-size="34" font-weight="600">fragment skill</text>
+    <text x="830" y="205" fill="#8b949e" font-size="15">antsibull-changelog · towncrier · scriv</text>
+    <text x="830" y="228" fill="#8b949e" font-size="15">one PR workflow, one CHANGELOG</text>
+  </g>
+</svg>
