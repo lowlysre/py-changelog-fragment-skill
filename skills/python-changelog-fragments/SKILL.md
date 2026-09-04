@@ -35,6 +35,7 @@ Check for these markers before doing anything else, they determine which referen
 - Don't hedge ("aims to fix", "should resolve"). State what the change does. If there's a genuine known limitation, say so plainly rather than leaving it out.
 - Skip connective filler ("Additionally,", "It's worth noting that", "Note that") and AI-flavored framing ("This release introduces..."). Start the sentence at the subject.
 - Skip fragments for changes with no user-facing effect (internal refactors, test-only changes, CI config) unless the project's contributing guide says otherwise.
+- End the fragment file with a trailing newline (a blank line after the last line of content), as is conventional for text files.
 
 ## 4. Validate before committing
 
